@@ -1,6 +1,8 @@
 # Alfredo
 Alfredo is an attempt to copy some of [Alfred's](https://www.alfredapp.com/) features to run on linux.
 
+![](https://media.giphy.com/media/otSTuknFf503Rvfzjg/giphy.gif)
+
 Alfredo was a POC project originally made to follow a book, but since It actually became useful to me I'm opening the repo with It's obvious flaws.
 
 ## How It Works
