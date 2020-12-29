@@ -1,4 +1,5 @@
 env
+build
 .pytest_cache
 .pyc
 .idea
