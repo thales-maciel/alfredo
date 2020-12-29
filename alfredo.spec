@@ -4,7 +4,7 @@ import os
 
 from kivymd import hooks_path as kivymd_hooks_path
 
-path = os.path.abspath(".")
+path = os.path.abspath("./src")
 
 block_cipher = None
 
