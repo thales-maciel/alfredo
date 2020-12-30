@@ -17,7 +17,7 @@ To write a plugin you should write a python class that inherit the `Plugin` clas
 This is the method that will run once the user selects an option. The command argument is a string defined in the option.
 
 ### `get_options(query)`
-This is the method that gives the options to the user. It receives a query, and It should return a list of options. An option is defined as a dict with a `title` key and an optional `subtitle` key (that will be displayed in the gui) and with a `command` key that will be passed to the `action` method one the option is selected.
+This is the method that gives the options to the user. It receives a query, and It should return a list of options. An option is defined as a dict with a `title` key, an optional `subtitle` key (that will be displayed in the gui) and with a `command` key that will be passed to the `action` method one the option is selected.
 
 ## Defining plugins and prefixes
 For the moment, Alfredo gets Its configs from the conf.py file in the root of the project. There you can find simple examples on how the plugins and prefixes are set.
