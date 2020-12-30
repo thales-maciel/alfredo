@@ -1,18 +1,18 @@
 import os
+from pathlib import Path
 
 from plugins.base import Plugin
 from plugins.utils import run_app
 
 
 class Apps(Plugin):
-    def __init__(self, *args, **kwargs):
-        self.path = "/usr/share/applications/"
-        super().__init__(*args, **kwargs)
 
+    user_dpath = str(Path.home().joinpath('.local/share/applications'))
+    dpath = "/usr/share/applications/"
     label = "Launch"
 
     def get_options(self, query):
-        apps = os.listdir(self.path)
+        apps = self.get_app_list(self.dpath, self.user_dpath)
         apps.sort()
         options = []
         for app in apps:
@@ -28,9 +28,15 @@ class Apps(Plugin):
     def action(self, command):
         run_app(command)
 
+    def get_app_list(self, *args):
+        apps = []
+        for path in args:
+            for file in os.listdir(path):
+                apps.append(os.path.join(path, file))
+        return apps
+
     def parse_desktop_file(self, app):
-        fullpath = self.path + app
-        f = open(fullpath)
+        f = open(app)
         app_item = {}
         for line in f.readlines():
             if line[0:5] == 'Name=' and 'title' not in app_item.keys():
