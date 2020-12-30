@@ -39,7 +39,10 @@ class RootLayout(GridLayout):
         self.alfredo = alfredo
 
         # Text Input
-        self.textinput = TextInput(text='', multiline=False, size_hint_y=None, height=50)
+        self.textinput = TextInput(
+            text='', multiline=False, size_hint_y=None,
+            height=50, padding=[12, 12, 12, 12], font_size=25
+        )
         self.textinput.write_tab = False
         self.textinput.bind(text=self.on_text)
         self.add_widget(self.textinput)
