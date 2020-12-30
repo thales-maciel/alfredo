@@ -36,15 +36,15 @@ class Apps(Plugin):
         return apps
 
     def parse_desktop_file(self, app):
-        f = open(app)
         app_item = {}
-        for line in f.readlines():
-            if line[0:5] == 'Name=' and 'title' not in app_item.keys():
-                app_item['title'] = line.split("=")[1].strip("\r\n")
-            if line[0:5] == "Exec=":
-                app_item['command'] = self.parse_line(line.split("=")[1].strip("\r\n"))
-                if len(app_item) > 1:
-                    return app_item
+        with open(app) as f:
+            for line in f.readlines():
+                if line[0:5] == 'Name=' and 'title' not in app_item.keys():
+                    app_item['title'] = line.split("=")[1].strip("\r\n")
+                if line[0:5] == "Exec=":
+                    app_item['command'] = self.parse_line(line.split("=")[1].strip("\r\n"))
+                    if len(app_item) > 1:
+                        return app_item
         return None
 
     @staticmethod
