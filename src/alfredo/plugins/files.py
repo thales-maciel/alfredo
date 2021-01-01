@@ -1,7 +1,7 @@
 import fnmatch
 import os
 
-from plugins.base import Plugin
+from alfredo.plugins.base import Plugin
 
 
 class Files(Plugin):
@@ -17,7 +17,9 @@ class Files(Plugin):
             for filename in fnmatch.filter(filenames, f'*{query}*'):
                 if len(options) == 5:
                     break
-                options.append(self.make_item(title=filename, command=os.path.join(root, filename), subtitle=self.label))
+                options.append(
+                    self.make_item(title=filename, command=os.path.join(root, filename), subtitle=self.label)
+                )
         return options
 
     def action(self, command):

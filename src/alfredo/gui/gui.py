@@ -6,7 +6,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 
-from alfredo import Alfredo
+from alfredo.alfredo import Alfredo
 
 Window.size = (800, 350)
 
