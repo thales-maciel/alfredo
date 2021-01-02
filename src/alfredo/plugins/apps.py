@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
 
-from alfredo.plugins.base import Plugin
-from alfredo.plugins.utils import run_app
+from plugins.base import Plugin
+from plugins.utils import run_app
 
 
 class Apps(Plugin):

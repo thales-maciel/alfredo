@@ -1,7 +1,7 @@
 import fnmatch
 import os
 
-from alfredo.plugins.base import Plugin
+from plugins.base import Plugin
 
 
 class Files(Plugin):

@@ -1,5 +1,5 @@
-from alfredo.plugins.base import Plugin
-from alfredo.plugins.utils import copy_to_clipboard
+from plugins.base import Plugin
+from plugins.utils import copy_to_clipboard
 
 
 class Calculator(Plugin):

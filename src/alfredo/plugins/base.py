@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import multiprocessing
 from multiprocessing import Queue
-from alfredo.alfredo_types.item import Item
+from alfredo_types.item import Item
 
 
 class Plugin(ABC, multiprocessing.Process):
