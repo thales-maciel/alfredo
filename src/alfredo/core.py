@@ -1,7 +1,9 @@
 from multiprocessing import Queue
 import threading
+from typing import Tuple, Union
 
 from alfredo.conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
+from alfredo.alfredo_types.item import Item
 
 
 class Alfredo:
@@ -24,24 +26,30 @@ class Alfredo:
                 self.callback(value)
                 v = value
 
+    def get_options(self, query: str) -> [Item]:
+        """From a given query, return a list of options"""
+        pass
+
+    def parse_query(self, query: str) -> Tuple[Union[str, None], str]:
+        """From a given query, return a tuple with the plugin
+        and the actual query"""
+        query = query.lstrip()
+        # If query is a math expression, send It to the calc plugin
+        try:
+            eval(query)
+            return self.calculator, query
+        except (SyntaxError, NameError):
+            if ' ' in query:
+                prefix = query.split(' ', 1)[0]
+                suffix = query.split(' ', 1)[1]
+                if prefix in self.plugins:
+                    return self._get_plugin(prefix), suffix
+        return self.default_plugin, query
+
     def parse_input(self, query):
         # If query is a math expression, send It to the calc plugin
-        # TODO Bring the calc plugin to the class, to stop double eval
-        try:
-            eval(query.split(' ', 1)[0])
-            plugin = self.calculator
-            command = query
-            self.setup_plugin(plugin, command)
-        except (SyntaxError, NameError):
-            candidate = query.split(' ', 1)[0]
-            if ' ' in query and candidate in self.plugins:
-                plugin = self._get_plugin(candidate)
-                command = query.split(' ', 1)[1]
-            else:
-                # If there is no prefix, send to default plugin
-                plugin = self.default_plugin
-                command = query
-        self.setup_plugin(plugin, command)
+        plugin, query = self.parse_query(query)
+        self.setup_plugin(plugin, query)
 
     def setup_plugin(self, plugin, query):
         if self.current_plugin:
