@@ -66,11 +66,15 @@ class Alfredo:
     def set_mode_label(self, new_label):
         self.gui.set_mode_label(new_label)
 
-
-if __name__ == "__main__":
+def main():
     import os
 
     os.environ["KIVY_NO_CONSOLELOG"] = "1"
     from gui.gui import MainApp
 
     MainApp().run()
+
+
+if __name__ == "__main__":
+    exit(main())
+
