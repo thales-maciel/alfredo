@@ -1,9 +1,10 @@
 from multiprocessing import Queue
 import threading
-from typing import Tuple, Union
+from typing import List, Tuple, Type, Union
 
 from alfredo.conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
 from alfredo.alfredo_types.item import Item
+from alfredo.plugins.base import Plugin
 
 
 class Alfredo:
@@ -26,11 +27,11 @@ class Alfredo:
                 self.callback(value)
                 v = value
 
-    def get_options(self, query: str) -> [Item]:
+    def get_options(self, query: str) -> List[Item]:
         """From a given query, return a list of options"""
         pass
 
-    def parse_query(self, query: str) -> Tuple[Union[str, None], str]:
+    def parse_query(self, query: str) -> Tuple[Union[Type[Plugin], None], str]:
         """From a given query, return a tuple with the plugin
         and the actual query"""
         query = query.lstrip()
