@@ -4,12 +4,12 @@ import os
 
 from kivymd import hooks_path as kivymd_hooks_path
 
-path = os.path.abspath("./src")
+path = os.path.abspath("./src/alfredo")
 
 block_cipher = None
 
 
-a = Analysis(['alfredo.py'],
+a = Analysis(['./src/alfredo/main.py'],
              pathex=[path],
              binaries=[],
              datas=[],
