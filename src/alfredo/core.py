@@ -1,7 +1,7 @@
 from multiprocessing import Queue
 import threading
 
-from conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
+from alfredo.conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
 
 
 class Alfredo:
@@ -70,7 +70,7 @@ def main():
     import os
 
     os.environ["KIVY_NO_CONSOLELOG"] = "1"
-    from gui.gui import MainApp
+    from alfredo.gui.gui import MainApp
 
     MainApp().run()
 

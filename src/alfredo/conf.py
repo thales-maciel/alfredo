@@ -1,7 +1,7 @@
-from plugins.apps import Apps
-from plugins.calculator import Calculator
-from plugins.files import Files
-from plugins.search import GoogleSearch, YoutubeSearch
+from alfredo.plugins.apps import Apps
+from alfredo.plugins.calculator import Calculator
+from alfredo.plugins.files import Files
+from alfredo.plugins.search import GoogleSearch, YoutubeSearch
 
 DEFAULT_CALCULATOR = Calculator
 

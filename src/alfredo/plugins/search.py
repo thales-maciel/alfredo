@@ -1,4 +1,4 @@
-from plugins.base import Plugin
+from alfredo.plugins.base import Plugin
 
 
 class GoogleSearch(Plugin):
