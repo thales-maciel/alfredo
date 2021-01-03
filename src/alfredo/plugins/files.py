@@ -1,12 +1,12 @@
 import fnmatch
-import os
+from pathlib import Path
 
 from alfredo.plugins.base import Plugin
 
 
 class Files(Plugin):
 
-    path = os.environ['HOME']
+    path = str(Path.home())
     label = "Launch"
 
     def get_options(self, query):
