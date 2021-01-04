@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pyinstaller -w --onefile alfredo.spec ; cp ./dist/alfredo ${1:-~/.local/bin/}alfredo --verbose
