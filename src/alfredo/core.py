@@ -34,6 +34,8 @@ class Alfredo:
     def parse_query(self, query: str) -> Tuple[Union[Type[Plugin], None], str]:
         """From a given query, return a tuple with the plugin
         and the actual query"""
+        if not isinstance(query, str):
+            raise TypeError(f"Only strings are allowed. Got {query}")
         query = query.lstrip()
         # If query is a math expression, send It to the calc plugin
         try:
