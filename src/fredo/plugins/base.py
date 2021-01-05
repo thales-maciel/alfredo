@@ -1,7 +1,7 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 import multiprocessing
 from multiprocessing import Queue
-from typing import List
 
 from fredo.fredo_types.item import Item
 
@@ -19,7 +19,7 @@ class Plugin(ABC, multiprocessing.Process):
         self.start()
 
     @abstractmethod
-    def get_options(self, query: str) -> List[Item]:
+    def get_options(self, query: str) -> list[Item]:
         """Should be overwritten. Method to return the options"""
         pass
 

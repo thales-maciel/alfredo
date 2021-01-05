@@ -1,6 +1,7 @@
+from __future__ import annotations
 from multiprocessing import Queue
 import threading
-from typing import List, Tuple, Type, Union
+from typing import Type, Union
 
 from fredo.conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
 from fredo.fredo_types.item import Item
@@ -27,11 +28,11 @@ class Fredo:
                 self.callback(value)
                 v = value
 
-    def get_options(self, query: str) -> List[Item]:
+    def get_options(self, query: str) -> list[Item]:
         """From a given query, return a list of options"""
         pass
 
-    def parse_query(self, query: str) -> Tuple[Union[Type[Plugin], None], str]:
+    def parse_query(self, query: str) -> tuple[Union[Type[Plugin], None], str]:
         """From a given query, return a tuple with the plugin
         and the actual query"""
         if not isinstance(query, str):
