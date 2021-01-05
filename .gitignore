@@ -7,4 +7,6 @@ exploration
 .tox
 *.egg-info
 __pycache__
+dist/*.whl
+dist/*.tar.gz
 
