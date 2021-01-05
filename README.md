@@ -27,3 +27,5 @@ To aviod a frozen screen while expensive functions run to search for results (li
 I don't really know how to handle this and would appreciate any help on the matter.
 
 There is no installable package or decent dependency management yet (some default actions assume that the user has a certain package installed, like `xclip`).
+
+The name will probably change, since there's another package named alfredo in PyPI at the present time.
