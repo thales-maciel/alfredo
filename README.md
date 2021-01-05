@@ -1,9 +1,12 @@
 # Fredo
+`pip install fredo`
+
 Fredo is an attempt to copy some of [Alfred's](https://www.alfredapp.com/) features to run on linux (X11).
 
 ![](https://media.giphy.com/media/otSTuknFf503Rvfzjg/giphy.gif)
 
 Fredo was a POC project originally made to follow a book, but since It actually became useful to me I'm opening the repo with It's obvious flaws.
+
 
 ## How It Works
 Fredo implements a simple interface written in kivy that receives input from the user. The input is then parsed at runtime by Fredo that resolves what plugin should be used to get options for the current query. Thus, Fredo works with prefixes. One can have a prefix 'p' for running python scripts for example, or the prefix 'y' to quickly search and open youtube.
