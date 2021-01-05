@@ -1,7 +1,8 @@
 import pytest
 
-from alfredo.core import Alfredo
+from fredo.core import Fredo
+
 
 @pytest.fixture
-def alfredo():
-    return Alfredo(None)
+def fredo():
+    return Fredo(None)
