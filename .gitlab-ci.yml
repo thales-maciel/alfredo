@@ -13,6 +13,6 @@ run:
   script:
     - tox
   artifacts:
-  when: always
-  reports:
-    junit: report.xml
+    when: always
+    reports:
+      junit: report.xml
