@@ -1,0 +1,10 @@
+[flake8]
+exclude =
+    .git,
+    .tox,
+    env,
+    .pytest_cache,
+    __pycache__,
+    old,
+    build,
+    dist
