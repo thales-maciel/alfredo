@@ -1,13 +1,13 @@
 default:
     image: fkrull/multi-python
 
+variables:
+  BASEPYTHON: "python3.9"
 
 before_script:
-    - python3.8 -V  # Print out python version for debugging
-    - python3.8 -m venv env
-    - python3.8 -m pip install -r dev-requirements.txt
+    - $BASEPYTHON -V  # Print out python version for debugging
+    - $BASEPYTHON -m venv env
     - source env/bin/activate
-
 
 run:
   script:
