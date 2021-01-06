@@ -1,5 +1,6 @@
 env
 build
+report.xml
 .pytest_cache
 .pyc
 .idea
