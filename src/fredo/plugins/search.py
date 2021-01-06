@@ -6,7 +6,9 @@ class GoogleSearch(Plugin):
     label = "Search with google"
 
     def get_options(self, query):
-        return [self.make_item(title=query, command=query, subtitle=self.label)]
+        return [self.make_item(
+            title=query, command=query, subtitle=self.label
+        )]
 
     def action(self, command):
         import webbrowser
@@ -20,7 +22,9 @@ class YoutubeSearch(Plugin):
     label = "Search with Youtube"
 
     def get_options(self, query):
-        return [self.make_item(title=query, command=query, subtitle=self.label)]
+        return [self.make_item(
+            title=query, command=query, subtitle=self.label
+        )]
 
     def action(self, command):
         import webbrowser

@@ -169,5 +169,6 @@ class MainApp(MDApp):
         return self.screen
 
     def get_application_name(self):
-        """Setting name of window so that I can force floating in any Window Manager"""
+        """Setting name of window so that I can force
+        floating in any Window Manager"""
         return '__fredo__'

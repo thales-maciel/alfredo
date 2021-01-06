@@ -1,7 +1,6 @@
 import os
 import sys
 
-from fredo.core import Fredo
 
 def main():
     # TODO add option to run with logs

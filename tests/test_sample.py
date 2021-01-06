@@ -24,4 +24,3 @@ def test_number_brings_calculator(fredo):
     plugin should be selected"""
     plugin, _ = fredo.parse_query('12')
     assert fredo.calculator == plugin
-

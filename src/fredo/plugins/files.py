@@ -1,4 +1,5 @@
 import fnmatch
+import os
 from pathlib import Path
 
 from fredo.plugins.base import Plugin
@@ -18,7 +19,11 @@ class Files(Plugin):
                 if len(options) == 5:
                     break
                 options.append(
-                    self.make_item(title=filename, command=os.path.join(root, filename), subtitle=self.label)
+                    self.make_item(
+                        title=filename,
+                        command=os.path.join(root, filename),
+                        subtitle=self.label
+                    )
                 )
         return options
 
