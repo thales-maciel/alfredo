@@ -16,3 +16,6 @@ run:
     when: always
     reports:
       junit: report.xml
+
+after_script:
+    - bash <(curl -s https://codecov.io/bash)

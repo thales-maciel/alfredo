@@ -10,4 +10,3 @@ exploration
 __pycache__
 dist/*.whl
 dist/*.tar.gz
-

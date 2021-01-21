@@ -1,17 +1,22 @@
+import functools
 import os
+import time
 from pathlib import Path
 
-from fredo.plugins.base import Plugin
 from fredo.plugins.utils import run_app
 
 
-class Apps(Plugin):
+class Apps():
 
     user_dpath = str(Path.home().joinpath('.local/share/applications'))
     dpath = "/usr/share/applications/"
     label = "Launch"
 
+    @functools.lru_cache
     def get_options(self, query):
+        print(f'running with query {query}')
+        print('sleeping...')
+        time.sleep(4)
         apps = self.get_app_list(self.dpath, self.user_dpath)
         apps.sort()
         options = []

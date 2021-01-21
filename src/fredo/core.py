@@ -1,4 +1,5 @@
 from __future__ import annotations
+import multiprocessing
 from multiprocessing import Queue
 import threading
 from typing import Type, Union
@@ -6,6 +7,57 @@ from typing import Type, Union
 from fredo.conf import PLUGINS, DEFAULT_CALCULATOR, DEFAULT_PLUGIN
 from fredo.fredo_types.item import Item
 from fredo.plugins.base import Plugin
+
+
+apps = DEFAULT_PLUGIN()
+
+
+class Joiner(threading.Thread):
+    def __init__(self, q, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.q = q
+
+    def run(self):
+        while True:
+            rv = self.q.get()
+            if rv:
+                print(rv)
+                return rv
+
+
+class PluginManager:
+    def __init__(self, plugins):
+        self.plugins = plugins
+
+    def is_valid_plugin(self, plugin):
+        """Check if plugin is valid"""
+        pass
+
+    def get_options(self, query):
+        pass
+
+
+class QueryProcess(multiprocessing.Process):
+    def __init__(self, q, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.q = q
+
+    def run(self) -> None:
+        result = self._target(*self._args, **self._kwargs)
+        self.q.put(result)
+
+
+def get_options_from_plugin(query):
+    q = Queue()
+    # listener = Joiner(q)
+    # listener.start()
+    process = QueryProcess(target=apps.get_options, args=(query,), q=q)
+    process.start()
+    # return listener.start()
+    while True:
+        rv = q.get()
+        if rv:
+            return rv
 
 
 class Fredo:
@@ -36,7 +88,7 @@ class Fredo:
         """From a given query, return a tuple with the plugin
         and the actual query"""
         if not isinstance(query, str):
-            raise TypeError(f"Only strings are allowed. Got {query}")
+            raise TypeError(f"Only strings are allowed. Got {type(query)} instead.")
         query = query.lstrip()
         # If query is a math expression, send It to the calc plugin
         try:
@@ -58,7 +110,7 @@ class Fredo:
     def setup_plugin(self, plugin, query):
         if self.current_plugin:
             self.current_plugin.kill()
-        self.current_plugin = plugin(fredo=self, query=query, q=self.q)
+        self.current_plugin = plugin(query=query, q=self.q)
         self.command = query
         self.set_mode_label(self.current_plugin.label)
 
