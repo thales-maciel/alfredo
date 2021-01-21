@@ -1,7 +1,5 @@
 [run]
 branch = true
-omit =
-    */test*
 
 [report]
 show_missing = true
